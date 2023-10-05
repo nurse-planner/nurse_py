@@ -1,10 +1,15 @@
 from typing import Union
 from fastapi import FastAPI, Request
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 import JsonParser
 import NurseDao
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+)
 
 
 @app.post("/")
